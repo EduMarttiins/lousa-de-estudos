@@ -1,7 +1,7 @@
 {
-  "contentVersion": 81,
+  "contentVersion": 82,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Distribui de forma equilibrada a posição das respostas corretas entre as alternativas nas matérias de Ciências, Língua Portuguesa, Geografia e História, preservando o conteúdo baseado nos livros e as respostas já salvas. Matemática permanece sem alterações.",
+  "message": "Corrige definitivamente a distribuição das respostas corretas entre as alternativas. O balanceamento agora é reaplicado após as rotinas antigas de restauração e monitorado na tela, preservando o conteúdo dos livros e sem alterar Matemática.",
   "publishedAt": "2026-09-16"
 }
