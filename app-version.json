@@ -1,7 +1,7 @@
 {
-  "contentVersion": 82,
+  "contentVersion": 83,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Corrige definitivamente a distribuição das respostas corretas entre as alternativas. O balanceamento agora é reaplicado após as rotinas antigas de restauração e monitorado na tela, preservando o conteúdo dos livros e sem alterar Matemática.",
+  "message": "Corrige o indicador de versão que era sobrescrito pela camada v69 e ativa verificação automática segura de novas versões quando o PWA abre, volta ao foco ou retorna ao primeiro plano. Se houver uma lição em andamento, a atualização é aplicada ao voltar para a tela inicial.",
   "publishedAt": "2026-09-16"
 }
