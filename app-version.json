@@ -1,7 +1,7 @@
 {
-  "contentVersion": 76,
+  "contentVersion": 77,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Correção da exibição das alternativas: textos completos deixam de aparecer cortados como A... ou Beb.... As questões do sistema urinário foram ajustadas com alternativas completas e plausíveis. A checagem vale para Ciências, Língua Portuguesa, Geografia e História. Matemática permanece sem alterações.",
+  "message": "Alternativas simplificadas: questões diretas usam opções curtas e relacionadas ao mesmo conteúdo, como Ureteres, Rins e Bexiga. Questões originais de múltipla escolha foram restauradas. Matemática permanece sem alterações.",
   "publishedAt": "2026-09-15"
 }
