@@ -1,7 +1,7 @@
 {
-  "contentVersion": 74,
+  "contentVersion": 75,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Cada lição de Ciências, Língua Portuguesa, Geografia e História agora apresenta um texto de revisão antes das questões. Ciências recebeu textos completos nos 8 temas. Matemática continua sem alterações.",
+  "message": "Revisão geral das alternativas: questões convertidas para múltipla escolha em Ciências, Língua Portuguesa, Geografia e História agora usam opções relacionadas ao conteúdo, sem respostas genéricas. Matemática continua sem alterações.",
   "publishedAt": "2026-09-15"
 }
