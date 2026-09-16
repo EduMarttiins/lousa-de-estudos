@@ -1,7 +1,7 @@
 {
-  "contentVersion": 78,
+  "contentVersion": 79,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "As respostas e alternativas de Ciências, Língua Portuguesa, Geografia e História passam a ser ancoradas no conteúdo dos livros. Questões originalmente abertas usam respostas do texto da própria lição e alternativas relacionadas ao mesmo conteúdo. Matemática permanece sem alterações.",
+  "message": "Correção de precisão no sistema digestório: a pergunta passa a ser 'Onde começa o processo de digestão?', com alternativas 'Na boca', 'No estômago' e 'No intestino delgado', conforme o Livro do Estudante. Matemática permanece sem alterações.",
   "publishedAt": "2026-09-15"
 }
