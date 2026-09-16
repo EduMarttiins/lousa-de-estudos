@@ -1,7 +1,7 @@
 {
-  "contentVersion": 77,
+  "contentVersion": 78,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Alternativas simplificadas: questões diretas usam opções curtas e relacionadas ao mesmo conteúdo, como Ureteres, Rins e Bexiga. Questões originais de múltipla escolha foram restauradas. Matemática permanece sem alterações.",
+  "message": "As respostas e alternativas de Ciências, Língua Portuguesa, Geografia e História passam a ser ancoradas no conteúdo dos livros. Questões originalmente abertas usam respostas do texto da própria lição e alternativas relacionadas ao mesmo conteúdo. Matemática permanece sem alterações.",
   "publishedAt": "2026-09-15"
 }
