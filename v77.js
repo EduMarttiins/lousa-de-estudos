@@ -5,9 +5,19 @@
 
   const TARGETS=['science','portuguese','geography','history'];
   let originalMaps=null;
+  let lastRenderedLesson=null;
 
-  /* Perguntas de Ciências que eram dissertativas no livro-base e agora precisam de
-     múltipla escolha curta. As erradas pertencem ao mesmo assunto da pergunta. */
+  /* Questões diretas do sistema urinário: opções curtas e do mesmo conteúdo. */
+  const SCIENCE_DIRECT={
+    q7:{options:['Bexiga','Rins','Ureteres'],correct:0},
+    s_uri3:{options:['Rins','Bexiga','Ureteres'],correct:0},
+    s_uri4:{options:['Ureteres','Rins','Bexiga'],correct:0},
+    s_uri5:{options:['Uretra','Ureteres','Bexiga'],correct:0},
+    s_uri6:{options:['Armazenar urina','Filtrar o sangue','Transportar a urina'],correct:0},
+    s_uri7:{options:['Ajuda os rins','Substitui a alimentação','Impede a filtração'],correct:0}
+  };
+
+  /* Perguntas de Ciências que eram dissertativas e passaram a ser múltipla escolha. */
   const SCIENCE_OPEN={
     q2:{options:['Órgãos trabalhando juntos','Um órgão sozinho','Apenas ossos'],correct:0},
     s_org9:{options:['Porque trabalham em sistemas','Porque todos fazem a mesma função','Porque ficam separados'],correct:0},
@@ -23,7 +33,7 @@
 
     q8:{options:['Ajuda os rins a filtrar resíduos','Faz a bexiga produzir urina','Impede a formação da urina'],correct:0},
     s_uri9:{options:['Rins → ureteres → bexiga → uretra','Bexiga → rins → uretra','Rins → bexiga → ureteres'],correct:0},
-    s_uri10:{options:['Porque os rins precisam de água','Porque a bexiga para de funcionar','Porque a água impede a urina'],correct:0},
+    s_uri10:{options:['Porque os rins precisam de água','Porque a bexiga produz água','Porque a água impede a urina'],correct:0},
 
     q10:{options:['Delgado: nutrientes; grosso: água','Delgado: urina; grosso: sangue','Os dois fazem a mesma função'],correct:0},
     s_dig9:{options:['Boca → esôfago → estômago → intestinos','Boca → pulmões → intestinos','Estômago → boca → intestinos'],correct:0},
@@ -53,7 +63,7 @@
   function buildMap(lessons){
     const map=new Map();
     (lessons||[]).forEach(lesson=>{
-      (lesson.questions||[]).forEach(q=>map.set(String(q.id||''),{question:q,lessonKey:String(lesson.key||'')}));
+      (lesson.questions||[]).forEach(q=>map.set(String(q.id||''),q));
     });
     return map;
   }
@@ -64,7 +74,7 @@
     const start=source.indexOf(marker);
     const end=source.indexOf(next,start+marker.length);
     if(start<0||end<0)return [];
-    let raw=source.slice(start+marker.length,end).trim().replace(/;\s*$/,'');
+    const raw=source.slice(start+marker.length,end).trim().replace(/;\s*$/,'');
     try{return JSON.parse(raw)}catch(e){console.warn('v77 parse '+name,e);return []}
   }
 
@@ -80,36 +90,44 @@
         history:buildMap(extractArray(source,'historyLessons','subjects'))
       };
       applyAll();
-      syncVisibleLesson();
+      if(lastRenderedLesson)syncLesson(lastRenderedLesson);
       window.__lousaV77OriginalsReady=true;
     }catch(e){
       console.warn('v77 originals',e);
-      /* Mesmo sem baixar a base, as perguntas abertas de Ciências recebem as opções curtas. */
-      applyScienceOpen();
-      syncVisibleLesson();
+      applyScienceOverrides();
+      if(lastRenderedLesson)syncLesson(lastRenderedLesson);
     }
+  }
+
+  function setChoice(q,item){
+    q.options=[...item.options];
+    q.correct=item.correct;
+    q.type='mcq';
+    q.reviewLabel='🧠 Escolha a melhor resposta';
   }
 
   function restoreQuestion(subjectKey,q){
     if(!q||!TARGETS.includes(subjectKey))return;
     const id=String(q.id||'');
-    const original=originalMaps?.[subjectKey]?.get(id)?.question;
 
-    /* Questão que já nasceu como múltipla escolha: usa exatamente as alternativas
-       curtas do conteúdo original. Isso desfaz a regra da v76 que alongava palavras. */
-    if(original?.type==='mcq' && Array.isArray(original.options)){
+    /* Estes exemplos seguem exatamente o padrão pedido: Ureteres / Rins / Bexiga. */
+    if(subjectKey==='science'&&SCIENCE_DIRECT[id]){
+      setChoice(q,SCIENCE_DIRECT[id]);
+      return;
+    }
+
+    /* Questões que já eram múltipla escolha voltam às alternativas originais do livro/app,
+       que são curtas. Assim, palavras como Cérebro, Lenda e Ureteres não são alongadas. */
+    const original=originalMaps?.[subjectKey]?.get(id);
+    if(original?.type==='mcq'&&Array.isArray(original.options)){
       q.options=[...original.options];
       q.correct=Number(original.correct)||0;
       q.type='mcq';
       return;
     }
 
-    /* Questão originalmente aberta em Ciências: versão curta criada para múltipla escolha. */
-    if(subjectKey==='science' && SCIENCE_OPEN[id]){
-      q.options=[...SCIENCE_OPEN[id].options];
-      q.correct=SCIENCE_OPEN[id].correct;
-      q.type='mcq';
-      q.reviewLabel='🧠 Escolha a melhor resposta';
+    if(subjectKey==='science'&&SCIENCE_OPEN[id]){
+      setChoice(q,SCIENCE_OPEN[id]);
       q.review='Leia a pergunta e escolha a alternativa mais adequada.';
     }
   }
@@ -120,18 +138,16 @@
   }
 
   function applyAll(){
-    try{
-      TARGETS.forEach(key=>(subjects?.[key]?.lessons||[]).forEach(lesson=>applyLesson(key,lesson)));
-    }catch(e){console.warn('v77 apply',e)}
+    try{TARGETS.forEach(key=>(subjects?.[key]?.lessons||[]).forEach(lesson=>applyLesson(key,lesson)))}catch(e){}
   }
 
-  function applyScienceOpen(){
+  function applyScienceOverrides(){
     try{
       (subjects?.science?.lessons||[]).forEach(lesson=>{
         (lesson.questions||[]).forEach(q=>{
-          const item=SCIENCE_OPEN[String(q.id||'')];
-          if(!item)return;
-          q.options=[...item.options];q.correct=item.correct;q.type='mcq';
+          const id=String(q.id||'');
+          const item=SCIENCE_DIRECT[id]||SCIENCE_OPEN[id];
+          if(item)setChoice(q,item);
         });
       });
     }catch(e){}
@@ -162,20 +178,6 @@
     (lesson.questions||[]).forEach((q,i)=>syncCard(cards[i],q));
   }
 
-  function syncVisibleLesson(){
-    try{
-      const key=String(currentSubjectKey||'');
-      if(!TARGETS.includes(key))return;
-      const visible=document.querySelector('.topicView.show');
-      if(!visible)return;
-      const lesson=(subjects?.[key]?.lessons||[]).find(l=>{
-        const el=document.querySelector('[data-topic="'+String(l.key||'')+'"]');
-        return el&&el.classList.contains('active');
-      });
-      if(lesson)syncLesson(lesson);
-    }catch(e){}
-  }
-
   function addStyles(){
     if(document.getElementById('v77ShortOptionStyles'))return;
     const style=document.createElement('style');
@@ -185,10 +187,9 @@
   }
 
   addStyles();
-  applyScienceOpen();
+  applyScienceOverrides();
 
-  /* v77 fica por fora dos wrappers antigos. Assim, mesmo que a v76 altere uma opção
-     durante a montagem, v77 restaura a alternativa curta depois. */
+  /* A v77 roda depois da v76 para desfazer qualquer alongamento feito pela regra antiga. */
   if(typeof buildQuestion==='function'&&!buildQuestion.__v77Wrapped){
     const previous=buildQuestion;
     const wrapped=function(q,num){
@@ -209,6 +210,7 @@
   if(typeof renderLesson==='function'&&!renderLesson.__v77Wrapped){
     const previous=renderLesson;
     const wrapped=function(lesson){
+      lastRenderedLesson=lesson;
       const result=previous(lesson);
       syncLesson(lesson);
       setTimeout(()=>syncLesson(lesson),0);
