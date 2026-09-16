@@ -1,7 +1,7 @@
 {
-  "contentVersion": 80,
+  "contentVersion": 81,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Restaura o acesso ao botão Zerar lições na tela Escolha a matéria, mantendo a autorização por e-mail antes de apagar o progresso. Nenhum conteúdo das matérias foi alterado.",
-  "publishedAt": "2026-09-15"
+  "message": "Distribui de forma equilibrada a posição das respostas corretas entre as alternativas nas matérias de Ciências, Língua Portuguesa, Geografia e História, preservando o conteúdo baseado nos livros e as respostas já salvas. Matemática permanece sem alterações.",
+  "publishedAt": "2026-09-16"
 }
