@@ -7,6 +7,7 @@
   let updating = false;
   let lastCheck = 0;
   let pendingVersion = 0;
+  let navigationObserver = null;
   const MIN_CHECK_INTERVAL = 15000;
   const PERIODIC_CHECK = 300000;
   const PENDING_KEY = 'lousa:autoUpdate:pendingVersion';
@@ -162,9 +163,25 @@
     } catch (error) {}
   }
 
+  function observeNavigation() {
+    try {
+      const topic = document.getElementById('topicView');
+      if (!topic || navigationObserver) return;
+      navigationObserver = new MutationObserver(() => {
+        if (!lessonIsOpen()) {
+          setTimeout(() => {
+            if (!applyPendingIfSafe()) checkForUpdate(false);
+          }, 80);
+        }
+      });
+      navigationObserver.observe(topic, { attributes: true, attributeFilter: ['class', 'style'] });
+    } catch (error) {}
+  }
+
   function init() {
     restorePending();
     patchNavigation();
+    observeNavigation();
     stampVersion();
     setTimeout(() => checkForUpdate(true), 700);
     setTimeout(() => stampVersion(), 5200);
