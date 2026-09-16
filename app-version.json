@@ -1,7 +1,7 @@
 {
-  "contentVersion": 75,
+  "contentVersion": 76,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Revisão geral das alternativas: questões convertidas para múltipla escolha em Ciências, Língua Portuguesa, Geografia e História agora usam opções relacionadas ao conteúdo, sem respostas genéricas. Matemática continua sem alterações.",
+  "message": "Correção da exibição das alternativas: textos completos deixam de aparecer cortados como A... ou Beb.... As questões do sistema urinário foram ajustadas com alternativas completas e plausíveis. A checagem vale para Ciências, Língua Portuguesa, Geografia e História. Matemática permanece sem alterações.",
   "publishedAt": "2026-09-15"
 }
