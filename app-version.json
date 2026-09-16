@@ -1,7 +1,7 @@
 {
-  "contentVersion": 79,
+  "contentVersion": 80,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Correção de precisão no sistema digestório: a pergunta passa a ser 'Onde começa o processo de digestão?', com alternativas 'Na boca', 'No estômago' e 'No intestino delgado', conforme o Livro do Estudante. Matemática permanece sem alterações.",
+  "message": "Restaura o acesso ao botão Zerar lições na tela Escolha a matéria, mantendo a autorização por e-mail antes de apagar o progresso. Nenhum conteúdo das matérias foi alterado.",
   "publishedAt": "2026-09-15"
 }
