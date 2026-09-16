@@ -1,8 +1,7 @@
-/* Lousa de Estudos, versão 69: preserva o formato original das questões de Português */
+/* Lousa de Estudos, camada legada v69: preserva o formato original de Português sem fixar a versão visual */
 (()=>{
   if(window.__lousaV69)return;
   window.__lousaV69=true;
-  window.__lousaCurrentContentVersion=69;
 
   const clone=value=>{
     try{return JSON.parse(JSON.stringify(value))}catch(error){return value}
@@ -83,12 +82,23 @@
     };
   }
 
+  function runtimeVersion(){
+    try{
+      const meta=Number(document.querySelector('meta[name="app-version"]')?.content||0);
+      const query=Number(new URLSearchParams(location.search).get('content')||0);
+      const runtime=Number(window.__lousaCurrentContentVersion||0);
+      return Math.max(meta,query,runtime);
+    }catch(error){return Number(window.__lousaCurrentContentVersion||0)}
+  }
+
   function reinforceVersion(){
     try{
+      const version=runtimeVersion();
+      if(!version)return;
       const meta=document.querySelector('meta[name="app-version"]');
-      if(meta)meta.setAttribute('content','69');
-      document.documentElement.dataset.contentVersion='69';
-      document.querySelectorAll('.lousaVersionOnly').forEach(el=>{el.textContent='v69'});
+      if(meta)meta.setAttribute('content',String(version));
+      document.documentElement.dataset.contentVersion=String(version);
+      document.querySelectorAll('.lousaVersionOnly').forEach(el=>{el.textContent='v'+version});
     }catch(error){}
   }
 
