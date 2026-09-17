@@ -1,7 +1,7 @@
 {
-  "contentVersion": 87,
+  "contentVersion": 88,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Mantém o texto completo das lições religiosas da v86 e adiciona uma recuperação robusta de atualização do PWA, removendo cache e service worker antigos antes de carregar a versão nova.",
+  "message": "Corrige o bloqueio de navegação causado pelo atualizador. A partir da v88, verificações de versão são passivas e nunca recarregam o aplicativo ao abrir matérias ou lições. Mantém as correções e os textos completos de Ensino Religioso.",
   "publishedAt": "2026-09-16"
 }
