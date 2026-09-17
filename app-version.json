@@ -1,7 +1,7 @@
 {
-  "contentVersion": 89,
+  "contentVersion": 90,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Estabiliza o aplicativo eliminando conflitos entre scripts antigos de versão. A v89 usa uma única autoridade de versão, impede camadas legadas de rebaixarem o número exibido e desativa verificações de atualização enquanto o app está em uso.",
+  "message": "Reformula as duas lições de Ensino Religioso. São João Paulo II e Livro de Daniel passam a ter textos de estudo completos, adaptados para o 5º ano, com todas as respostas necessárias; as perguntas foram mantidas exatamente como aparecem nos dois materiais enviados e continuam em múltipla escolha.",
   "publishedAt": "2026-09-16"
 }
