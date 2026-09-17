@@ -2,26 +2,36 @@
 (()=>{
   if(window.__lousaV68)return;
   window.__lousaV68=true;
-  window.__lousaCurrentContentVersion=68;
 
   const clone=value=>{
     try{return JSON.parse(JSON.stringify(value))}catch(error){return value}
   };
 
-  function forceVersion68(){
+  function runtimeVersion(){
     try{
+      const meta=Number(document.querySelector('meta[name="app-version"]')?.content||0);
+      const query=Number(new URLSearchParams(location.search).get('content')||0);
+      const runtime=Number(window.__lousaCurrentContentVersion||0);
+      return Math.max(68,meta,query,runtime);
+    }catch(error){return Math.max(68,Number(window.__lousaCurrentContentVersion||0))}
+  }
+
+  function reinforceCurrentVersion(){
+    try{
+      const version=runtimeVersion();
+      window.__lousaCurrentContentVersion=Math.max(version,Number(window.__lousaCurrentContentVersion||0));
       const meta=document.querySelector('meta[name="app-version"]');
-      if(meta)meta.setAttribute('content','68');
-      document.documentElement.dataset.contentVersion='68';
+      if(meta&&Number(meta.content||0)<version)meta.setAttribute('content',String(version));
+      document.documentElement.dataset.contentVersion=String(version);
       document.querySelectorAll('.lousaVersionOnly').forEach(el=>{
-        if(el.textContent!=='v68')el.textContent='v68';
+        if(!el.classList.contains('pending')&&el.textContent!=='v'+version)el.textContent='v'+version;
       });
     }catch(error){}
   }
 
   function protectVersionLabel(){
-    forceVersion68();
-    [400,800,1500,3000].forEach(delay=>setTimeout(forceVersion68,delay));
+    reinforceCurrentVersion();
+    [400,800,1500,3000].forEach(delay=>setTimeout(reinforceCurrentVersion,delay));
   }
 
   function restorePortugueseQuestions(){
