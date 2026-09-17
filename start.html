@@ -10,24 +10,19 @@ html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI
 </style>
 </head>
 <body>
-<div class="boot"><div class="card"><div class="spinner"></div><strong>Abrindo a Lousa de Estudos</strong><p>Buscando a versão mais recente...</p></div></div>
+<div class="boot"><div class="card"><div class="spinner"></div><strong>Abrindo a Lousa de Estudos</strong><p>Carregando a versão estável...</p></div></div>
 <script>
 (async()=>{
   const params=new URLSearchParams(location.search);
-  const fallbackVersion=90;
+  const fallbackVersion=91;
   const hardUpdate=params.has('update')||params.get('force')==='1'||params.has('rescue');
   try{
     let version=fallbackVersion;
     try{
-      const response=await fetch('./app-version.json?boot='+Date.now()+'&force='+(hardUpdate?'1':'0'),{cache:'no-store'});
-      if(response.ok){
-        const data=await response.json();
-        const remote=Number(data.contentVersion||0);
-        if(remote>0)version=remote;
-      }
+      const response=await fetch('./app-version.json?boot='+Date.now(),{cache:'no-store'});
+      if(response.ok){const data=await response.json();const remote=Number(data.contentVersion||0);if(remote>0)version=remote;}
     }catch(error){}
-
-    if(hardUpdate && !params.has('rescueDone')){
+    if(hardUpdate&&!params.has('rescueDone')){
       const rescue=new URL('./rescue.html',location.href);
       rescue.searchParams.set('target',String(version));
       rescue.searchParams.set('from','start');
@@ -35,9 +30,7 @@ html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI
       location.replace(rescue.toString());
       return;
     }
-
-    const shell=version>=68?'./v68.html':'./v52.html';
-    const target=new URL(shell,location.href);
+    const target=new URL('./v68.html',location.href);
     target.searchParams.set('pwa','1');
     target.searchParams.set('content',String(version));
     target.searchParams.set('boot',String(Date.now()));
@@ -45,11 +38,11 @@ html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI
     if(params.get('apk'))target.searchParams.set('apk',params.get('apk'));
     location.replace(target.toString());
   }catch(error){
-    const rescue=new URL('./rescue.html',location.href);
-    rescue.searchParams.set('target',String(fallbackVersion));
-    rescue.searchParams.set('from','fallback');
-    rescue.searchParams.set('ts',String(Date.now()));
-    location.replace(rescue.toString());
+    const target=new URL('./v68.html',location.href);
+    target.searchParams.set('pwa','1');
+    target.searchParams.set('content',String(fallbackVersion));
+    target.searchParams.set('boot',String(Date.now()));
+    location.replace(target.toString());
   }
 })();
 </script>
