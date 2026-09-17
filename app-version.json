@@ -1,7 +1,7 @@
 {
-  "contentVersion": 85,
+  "contentVersion": 86,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Corrige as lições de Ensino Religioso para que todas as perguntas de São João Paulo II e Daniel sejam exibidas como múltipla escolha com três alternativas, removendo estados antigos de resposta à mão quando necessário.",
+  "message": "Adiciona um texto completo de revisão no início das lições de Ensino Religioso. Todas as informações necessárias para responder às questões de São João Paulo II e Daniel ficam disponíveis no próprio texto da lição.",
   "publishedAt": "2026-09-16"
 }
