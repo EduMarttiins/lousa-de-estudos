@@ -15,26 +15,20 @@
   async function refreshLegacyLaunchUrls(){
     const marker='lousaV66LegacyLaunchRepair';
     try{if(localStorage.getItem(marker)==='1')return}catch(error){}
-    const urls=[
-      './v52.html?pwa=1&v=57',
-      './v52.html?androidapp=1',
-      './v52.html?androidapp=1&apk=2',
-      './v52.html?androidapp=1&apk=3'
-    ];
+    const urls=['./v52.html?pwa=1&v=57','./v52.html?androidapp=1','./v52.html?androidapp=1&apk=2','./v52.html?androidapp=1&apk=3'];
     try{
-      const results=await Promise.all(urls.map(async url=>{
-        const response=await fetch(url,{cache:'reload'});
-        return response.ok;
-      }));
-      if(results.every(Boolean)){
-        try{localStorage.setItem(marker,'1')}catch(error){}
-      }
+      const results=await Promise.all(urls.map(async url=>{const response=await fetch(url,{cache:'reload'});return response.ok;}));
+      if(results.every(Boolean)){try{localStorage.setItem(marker,'1')}catch(error){}}
     }catch(error){}
   }
 
   function reinforceCurrentVersion(){
     try{
-      document.querySelectorAll('.lousaVersionOnly').forEach(el=>{el.textContent='v66'});
+      const meta=Number(document.querySelector('meta[name="app-version"]')?.content||0);
+      const query=Number(new URLSearchParams(location.search).get('content')||0);
+      const runtime=Number(window.__lousaCurrentContentVersion||0);
+      const version=Math.max(meta,query,runtime,66);
+      document.querySelectorAll('.lousaVersionOnly').forEach(el=>{if(el.textContent!=='v'+version)el.textContent='v'+version});
     }catch(error){}
   }
 
