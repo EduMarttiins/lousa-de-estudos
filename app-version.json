@@ -1,7 +1,7 @@
 {
-  "contentVersion": 86,
+  "contentVersion": 87,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Adiciona um texto completo de revisão no início das lições de Ensino Religioso. Todas as informações necessárias para responder às questões de São João Paulo II e Daniel ficam disponíveis no próprio texto da lição.",
+  "message": "Mantém o texto completo das lições religiosas da v86 e adiciona uma recuperação robusta de atualização do PWA, removendo cache e service worker antigos antes de carregar a versão nova.",
   "publishedAt": "2026-09-16"
 }
