@@ -23,6 +23,7 @@
 
   function applyFullTexts(){
     try{
+      if(window.__lousaV90ReligionExact)return true;
       const subject=subjects?.religion;
       if(!subject||!Array.isArray(subject.lessons))return false;
       subject.lessons.forEach(lesson=>{
@@ -55,7 +56,7 @@
       if(typeof renderLesson!=='function'||renderLesson.__v86ReligionFullText)return;
       const previous=renderLesson;
       const wrapped=function(lesson){
-        if(String(typeof currentSubjectKey!=='undefined'?currentSubjectKey:'')==='religion')applyFullTexts();
+        if(!window.__lousaV90ReligionExact&&String(typeof currentSubjectKey!=='undefined'?currentSubjectKey:'')==='religion')applyFullTexts();
         return previous.apply(this,arguments);
       };
       wrapped.__v86ReligionFullText=true;
@@ -73,7 +74,9 @@
       const metaEl=document.querySelector('meta[name="app-version"]');
       if(metaEl&&Number(metaEl.content||0)<version)metaEl.content=String(version);
       document.documentElement.dataset.contentVersion=String(version);
-      document.querySelectorAll('.lousaVersionOnly').forEach(el=>el.textContent='v'+version);
+      document.querySelectorAll('.lousaVersionOnly').forEach(el=>{
+        if(!el.classList.contains('pending')&&el.textContent!=='v'+version)el.textContent='v'+version;
+      });
     }catch(e){}
   }
 
@@ -81,6 +84,11 @@
   applyFullTexts();
   patchRenderLesson();
   stampVersion();
-  [250,800,1800,3200].forEach(ms=>setTimeout(()=>{applyFullTexts();patchRenderLesson();stampVersion()},ms));
+  [250,800,1800,3200].forEach(ms=>setTimeout(()=>{
+    if(!window.__lousaV90ReligionExact)applyFullTexts();
+    patchRenderLesson();
+    stampVersion();
+  },ms));
+
   window.__lousaV86Ready=true;
 })();
