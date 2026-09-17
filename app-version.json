@@ -1,7 +1,7 @@
 {
-  "contentVersion": 90,
+  "contentVersion": 91,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Reformula as duas lições de Ensino Religioso. São João Paulo II e Livro de Daniel passam a ter textos de estudo completos, adaptados para o 5º ano, com todas as respostas necessárias; as perguntas foram mantidas exatamente como aparecem nos dois materiais enviados e continuam em múltipla escolha.",
+  "message": "Estabiliza definitivamente a Lousa durante o uso: remove da inicialização as camadas antigas v83-v90 de controle de versão, elimina o atualizador em segundo plano, unifica o service worker em um único endereço e impede skipWaiting/clients.claim. Mantém integralmente os novos conteúdos de Ensino Religioso.",
   "publishedAt": "2026-09-16"
 }
