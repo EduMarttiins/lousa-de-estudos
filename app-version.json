@@ -1,7 +1,7 @@
 {
-  "contentVersion": 84,
+  "contentVersion": 85,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Adiciona a matéria Ensino Religioso com duas novas lições: São João Paulo II e Daniel e o Livro de Daniel. As questões têm revisão antes das perguntas e respostas corretas distribuídas entre as alternativas.",
+  "message": "Corrige as lições de Ensino Religioso para que todas as perguntas de São João Paulo II e Daniel sejam exibidas como múltipla escolha com três alternativas, removendo estados antigos de resposta à mão quando necessário.",
   "publishedAt": "2026-09-16"
 }
