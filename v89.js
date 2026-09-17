@@ -9,13 +9,13 @@
     if(correcting)return;
     correcting=true;
     try{
-      window.__lousaCurrentContentVersion=VERSION;
+      if(Number(window.__lousaCurrentContentVersion||0)!==VERSION)window.__lousaCurrentContentVersion=VERSION;
       const meta=document.querySelector('meta[name="app-version"]');
-      if(meta)meta.setAttribute('content',String(VERSION));
-      document.documentElement.dataset.contentVersion=String(VERSION);
+      if(meta&&String(meta.getAttribute('content')||'')!==String(VERSION))meta.setAttribute('content',String(VERSION));
+      if(String(document.documentElement.dataset.contentVersion||'')!==String(VERSION))document.documentElement.dataset.contentVersion=String(VERSION);
       document.querySelectorAll('.lousaVersionOnly').forEach(el=>{
-        el.classList.remove('pending');
-        el.textContent='v'+VERSION;
+        if(el.classList.contains('pending'))el.classList.remove('pending');
+        if(el.textContent!=='v'+VERSION)el.textContent='v'+VERSION;
       });
     }catch(e){}
     correcting=false;
