@@ -1,7 +1,7 @@
 {
-  "contentVersion": 83,
+  "contentVersion": 84,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Corrige o indicador de versão que era sobrescrito pela camada v69 e ativa verificação automática segura de novas versões quando o PWA abre, volta ao foco ou retorna ao primeiro plano. Se houver uma lição em andamento, a atualização é aplicada ao voltar para a tela inicial.",
+  "message": "Adiciona a matéria Ensino Religioso com duas novas lições: São João Paulo II e Daniel e o Livro de Daniel. As questões têm revisão antes das perguntas e respostas corretas distribuídas entre as alternativas.",
   "publishedAt": "2026-09-16"
 }
