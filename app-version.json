@@ -1,7 +1,7 @@
 {
-  "contentVersion": 88,
+  "contentVersion": 89,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Corrige o bloqueio de navegação causado pelo atualizador. A partir da v88, verificações de versão são passivas e nunca recarregam o aplicativo ao abrir matérias ou lições. Mantém as correções e os textos completos de Ensino Religioso.",
+  "message": "Estabiliza o aplicativo eliminando conflitos entre scripts antigos de versão. A v89 usa uma única autoridade de versão, impede camadas legadas de rebaixarem o número exibido e desativa verificações de atualização enquanto o app está em uso.",
   "publishedAt": "2026-09-16"
 }
