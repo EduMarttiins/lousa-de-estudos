@@ -1,9 +1,20 @@
-const VERSION='90-religion-exact-material';
-const CONTENT_VERSION='90';
+const VERSION='91-stable-runtime';
 const CACHE='lousa-de-estudos-v'+VERSION;
-const ASSETS=["./start.html","./rescue.html","./index.html","./v52.html","./loader-v55.js?v=69legacy","./v68.html","./loader-v90.js?v=90","./v37.css?v=90","./v37.js?v=90","./v41.js?v=90","./v50.js?v=90","./pwa-v39.css?v=90","./pwa-v52.js?v=70install-auto","./v54.js?v=90","./v55.js?v=90","./v56.js?v=90","./v57.js?v=90","./v58.js?v=90","./v59.js?v=90","./v60.js?v=90","./v62.js?v=90","./v63.js?v=90","./v64.js?v=90","./v65.js?v=90","./v66.js?v=90","./v67.js?v=90","./v68.js?v=90","./v69.js?v=90","./v70-data-01.js?v=90","./v70-data-02.js?v=90","./v70-data-03.js?v=90","./v70-data-04.js?v=90","./v70-data-05.js?v=90","./v70-data-06.js?v=90","./v70-data-07.js?v=90","./v70-data-08.js?v=90","./v70-data-09.js?v=90","./v70-data-10.js?v=90","./v70-data-11.js?v=90","./v70.js?v=90","./v71.js?v=90","./v72.js?v=90","./v73.js?v=90","./v74.js?v=90","./v75.js?v=90","./v76.js?v=90","./v77.js?v=90","./v78.js?v=90","./v79.js?v=90","./v80.js?v=90","./v81.js?v=90","./v82.js?v=90","./v83.js?v=90","./v84.js?v=90","./v85.js?v=90","./v86.js?v=90","./v87.js?v=90","./v88.js?v=90","./v89.js?v=90","./v55-auto-update.js?v=90","./v90-jp.js?v=90","./v90-dn.js?v=90","./v90.js?v=90","./manifest.webmanifest?v=90","./icons/lousa-icon-192.png?v=90","./icons/lousa-icon-512.png?v=90"];
-self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(ASSETS);self.skipWaiting();})());});
-self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('lousa-de-estudos-v')&&k!==CACHE).map(k=>caches.delete(k)));await self.clients.claim();})());});
-self.addEventListener('message',event=>{if(event.data&&event.data.type==='SKIP_WAITING')self.skipWaiting();});
+const ASSETS=[
+  './start.html','./rescue.html','./index.html','./v68.html','./loader-v91.js?v=91',
+  './v37.css?v=91','./pwa-v39.css?v=91','./v37.js?v=91','./v41.js?v=91','./v50.js?v=91','./v54.js?v=91',
+  './v55.js?v=91','./v56.js?v=91','./v57.js?v=91','./v58.js?v=91','./v59.js?v=91','./v60.js?v=91',
+  './v62.js?v=91','./v63.js?v=91','./v64.js?v=91','./v65.js?v=91','./v66.js?v=91','./v67.js?v=91','./v68.js?v=91','./v69.js?v=91',
+  './v70-data-01.js?v=91','./v70-data-02.js?v=91','./v70-data-03.js?v=91','./v70-data-04.js?v=91','./v70-data-05.js?v=91','./v70-data-06.js?v=91','./v70-data-07.js?v=91','./v70-data-08.js?v=91','./v70-data-09.js?v=91','./v70-data-10.js?v=91','./v70-data-11.js?v=91',
+  './v70.js?v=91','./v71.js?v=91','./v72.js?v=91','./v73.js?v=91','./v74.js?v=91','./v75.js?v=91','./v76.js?v=91','./v77.js?v=91','./v78.js?v=91','./v79.js?v=91','./v80.js?v=91','./v81.js?v=91','./v82.js?v=91',
+  './v90-jp.js?v=91','./v90-dn.js?v=91','./v91.js?v=91','./manifest.webmanifest?v=91','./icons/lousa-icon-192.png?v=91','./icons/lousa-icon-512.png?v=91'
+];
+self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(ASSETS);})());});
+self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('lousa-de-estudos-v')&&k!==CACHE).map(k=>caches.delete(k)));})());});
 async function networkFirst(request){try{const response=await fetch(request,{cache:'no-store'});if(response&&response.ok){const cache=await caches.open(CACHE);cache.put(request,response.clone()).catch(()=>{});}return response;}catch(error){const cached=await caches.match(request,{ignoreSearch:true});if(cached)return cached;throw error;}}
-self.addEventListener('fetch',event=>{const request=event.request;if(request.method!=='GET')return;const url=new URL(request.url);if(url.origin!==self.location.origin)return;if(url.pathname.endsWith('/app-version.json')||url.pathname.endsWith('/start.html')||url.pathname.endsWith('/rescue.html')||url.pathname.endsWith('/v52.html')||url.pathname.endsWith('/loader-v55.js')||url.pathname.endsWith('/v68.html')||url.pathname.endsWith('/loader-v90.js')||url.pathname.endsWith('/v90-jp.js')||url.pathname.endsWith('/v90-dn.js')||url.pathname.endsWith('/v90.js')||url.pathname.endsWith('/v89.js')||url.pathname.endsWith('/v86.js')||url.pathname.endsWith('/v55-auto-update.js')||url.pathname.endsWith('/v68.js')||url.pathname.endsWith('/v69.js')){event.respondWith(networkFirst(request));return;}if(request.mode==='navigate'){event.respondWith((async()=>{try{const response=await fetch(request,{cache:'no-store'});if(response&&response.ok){const cache=await caches.open(CACHE);cache.put(request,response.clone()).catch(()=>{});return response;}}catch(error){}return (await caches.match('./start.html',{ignoreSearch:true}))||(await caches.match('./v68.html',{ignoreSearch:true}))||networkFirst(request);})());return;}event.respondWith(networkFirst(request));});
+self.addEventListener('fetch',event=>{
+  const request=event.request;if(request.method!=='GET')return;
+  const url=new URL(request.url);if(url.origin!==self.location.origin)return;
+  if(request.mode==='navigate'||url.pathname.endsWith('/app-version.json')||url.pathname.endsWith('/start.html')||url.pathname.endsWith('/rescue.html')||url.pathname.endsWith('/v68.html')||url.pathname.endsWith('/loader-v91.js')||url.pathname.endsWith('/v91.js')){event.respondWith(networkFirst(request));return;}
+  event.respondWith(networkFirst(request));
+});
