@@ -1,7 +1,7 @@
 {
-  "contentVersion": 91,
+  "contentVersion": 92,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Estabiliza definitivamente a Lousa durante o uso: remove da inicialização as camadas antigas v83-v90 de controle de versão, elimina o atualizador em segundo plano, unifica o service worker em um único endereço e impede skipWaiting/clients.claim. Mantém integralmente os novos conteúdos de Ensino Religioso.",
+  "message": "Amplia os textos de revisão das seis lições de Geografia para que o aluno encontre no próprio conteúdo as informações necessárias para responder às questões. Mantém as perguntas existentes e preserva o runtime estável da v91, sem atualização em segundo plano.",
   "publishedAt": "2026-09-16"
 }
