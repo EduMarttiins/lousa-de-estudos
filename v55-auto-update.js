@@ -1,13 +1,11 @@
-/* Lousa de Estudos — atualização automática segura com recuperação robusta */
+/* Lousa de Estudos — atualização passiva: nunca interrompe a navegação */
 (() => {
   if (window.__lousaAutoUpdate) return;
   window.__lousaAutoUpdate = true;
 
   let checking = false;
-  let updating = false;
   let lastCheck = 0;
   let pendingVersion = 0;
-  let navigationObserver = null;
   const MIN_CHECK_INTERVAL = 15000;
   const PERIODIC_CHECK = 300000;
   const PENDING_KEY = 'lousa:autoUpdate:pendingVersion';
@@ -25,7 +23,7 @@
     const style = document.createElement('style');
     style.id = 'lousaUpdateStyles';
     style.textContent = `
-      .lousaVersionOnly{position:fixed;left:5px;bottom:max(4px,env(safe-area-inset-bottom));z-index:105000;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:9px;line-height:1;color:#7a857e;background:rgba(255,255,255,.78);border-radius:7px;padding:5px 7px;box-shadow:0 2px 7px rgba(15,23,42,.06);opacity:.9;border:0}
+      .lousaVersionOnly{position:fixed;left:5px;bottom:max(4px,env(safe-area-inset-bottom));z-index:105000;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:9px;line-height:1;color:#7a857e;background:rgba(255,255,255,.78);border-radius:7px;padding:5px 7px;box-shadow:0 2px 7px rgba(15,23,42,.06);opacity:.9;border:0;pointer-events:none}
       .lousaVersionOnly.pending{color:#6a4a06;background:rgba(255,245,190,.97);font-weight:900;pointer-events:auto;cursor:pointer;box-shadow:0 5px 16px rgba(106,74,6,.16)}
       @media(max-width:520px){.lousaVersionOnly{font-size:8.5px}}
     `;
@@ -41,7 +39,7 @@
       label.type = 'button';
       label.className = 'lousaVersionOnly';
       label.addEventListener('click', () => {
-        if (pendingVersion > currentVersion()) navigateToUpdate(pendingVersion);
+        if (pendingVersion > currentVersion()) manualUpdate(pendingVersion);
       });
       document.body.appendChild(label);
     }
@@ -67,22 +65,6 @@
     } catch (error) {}
   }
 
-  function lessonIsOpen() {
-    try {
-      const topic = document.getElementById('topicView');
-      if (topic?.classList.contains('show')) return true;
-      const lessonContent = document.getElementById('lessonContent');
-      if (lessonContent && lessonContent.querySelector('.question')) {
-        const rect = lessonContent.getBoundingClientRect();
-        const style = getComputedStyle(lessonContent);
-        if (style.display !== 'none' && style.visibility !== 'hidden' && rect.height > 0) return true;
-      }
-    } catch (error) {}
-    return false;
-  }
-
-  function safeToUpdateNow() { return !lessonIsOpen(); }
-
   function savePending(version) {
     pendingVersion = Math.max(pendingVersion, Number(version || 0));
     try {
@@ -100,30 +82,18 @@
     } catch (error) {}
   }
 
-  function navigateToUpdate(version) {
-    if (updating) return;
-    updating = true;
+  function manualUpdate(version) {
+    const targetVersion = Number(version || pendingVersion || 0) || currentVersion();
     try { localStorage.removeItem(PENDING_KEY); } catch (error) {}
-    const targetVersion = Number(version || pendingVersion || 0) || 87;
     const target = new URL('./rescue.html', location.href);
     target.searchParams.set('target', String(targetVersion));
-    target.searchParams.set('from', 'auto');
+    target.searchParams.set('from', 'manual');
     target.searchParams.set('ts', String(Date.now()));
-    location.replace(target.toString());
-  }
-
-  function applyPendingIfSafe() {
-    const current = currentVersion();
-    if (pendingVersion > current && safeToUpdateNow()) {
-      navigateToUpdate(pendingVersion);
-      return true;
-    }
-    stampVersion();
-    return false;
+    location.href = target.toString();
   }
 
   async function checkForUpdate(force = false) {
-    if (checking || updating) return;
+    if (checking) return;
     const now = Date.now();
     if (!force && now - lastCheck < MIN_CHECK_INTERVAL) return;
     lastCheck = now;
@@ -134,10 +104,8 @@
       const data = await response.json();
       const remote = Number(data?.contentVersion || 0);
       const current = currentVersion();
-      if (remote > current) {
-        savePending(remote);
-        applyPendingIfSafe();
-      } else {
+      if (remote > current) savePending(remote);
+      else {
         pendingVersion = 0;
         try { localStorage.removeItem(PENDING_KEY); } catch (error) {}
         stampVersion();
@@ -149,43 +117,17 @@
     }
   }
 
-  function patchNavigation() {
-    try {
-      if (typeof showSubjects === 'function' && !showSubjects.__autoUpdateWrapped) {
-        const previous = showSubjects;
-        const wrapped = function() {
-          const result = previous.apply(this, arguments);
-          setTimeout(() => { if (!applyPendingIfSafe()) checkForUpdate(true); }, 120);
-          return result;
-        };
-        wrapped.__autoUpdateWrapped = true;
-        showSubjects = wrapped;
-      }
-    } catch (error) {}
-  }
-
-  function observeNavigation() {
-    try {
-      const topic = document.getElementById('topicView');
-      if (!topic || navigationObserver) return;
-      navigationObserver = new MutationObserver(() => {
-        if (!lessonIsOpen()) setTimeout(() => { if (!applyPendingIfSafe()) checkForUpdate(false); }, 80);
-      });
-      navigationObserver.observe(topic, { attributes: true, attributeFilter: ['class', 'style'] });
-    } catch (error) {}
-  }
-
   function init() {
     restorePending();
-    patchNavigation();
-    observeNavigation();
     stampVersion();
-    setTimeout(() => checkForUpdate(true), 700);
+    setTimeout(() => checkForUpdate(true), 1000);
     setTimeout(() => stampVersion(), 5200);
     window.addEventListener('focus', () => checkForUpdate(false));
     window.addEventListener('pageshow', () => checkForUpdate(false));
     window.addEventListener('online', () => checkForUpdate(true));
-    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') checkForUpdate(false); });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') checkForUpdate(false);
+    });
     setInterval(() => checkForUpdate(false), PERIODIC_CHECK);
   }
 
