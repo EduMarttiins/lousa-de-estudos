@@ -14,28 +14,9 @@ html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI
 <script>
 (async()=>{
   const params=new URLSearchParams(location.search);
-  const fallbackVersion=86;
+  const fallbackVersion=87;
   const hardUpdate=params.has('update')||params.get('force')==='1'||params.has('rescue');
-
-  async function purgeOldRuntime(){
-    try{
-      if('caches' in window){
-        const keys=await caches.keys();
-        await Promise.all(keys.filter(key=>key.startsWith('lousa-de-estudos-v')).map(key=>caches.delete(key)));
-      }
-    }catch(error){}
-    try{
-      if('serviceWorker' in navigator){
-        const regs=await navigator.serviceWorker.getRegistrations();
-        await Promise.all(regs.map(reg=>reg.unregister().catch(()=>false)));
-      }
-    }catch(error){}
-    await new Promise(resolve=>setTimeout(resolve,120));
-  }
-
   try{
-    if(hardUpdate)await purgeOldRuntime();
-
     let version=fallbackVersion;
     try{
       const response=await fetch('./app-version.json?boot='+Date.now()+'&force='+(hardUpdate?'1':'0'),{cache:'no-store'});
@@ -46,23 +27,29 @@ html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI
       }
     }catch(error){}
 
+    if(hardUpdate && !params.has('rescueDone')){
+      const rescue=new URL('./rescue.html',location.href);
+      rescue.searchParams.set('target',String(version));
+      rescue.searchParams.set('from','start');
+      rescue.searchParams.set('ts',String(Date.now()));
+      location.replace(rescue.toString());
+      return;
+    }
+
     const shell=version>=68?'./v68.html':'./v52.html';
     const target=new URL(shell,location.href);
     target.searchParams.set('pwa','1');
     target.searchParams.set('content',String(version));
     target.searchParams.set('boot',String(Date.now()));
-    if(hardUpdate)target.searchParams.set('hard','1');
     if(params.get('androidapp')==='1')target.searchParams.set('androidapp','1');
     if(params.get('apk'))target.searchParams.set('apk',params.get('apk'));
     location.replace(target.toString());
   }catch(error){
-    const target=new URL('./v68.html',location.href);
-    target.searchParams.set('pwa','1');
-    target.searchParams.set('content',String(fallbackVersion));
-    target.searchParams.set('boot',String(Date.now()));
-    if(params.get('androidapp')==='1')target.searchParams.set('androidapp','1');
-    if(params.get('apk'))target.searchParams.set('apk',params.get('apk'));
-    location.replace(target.toString());
+    const rescue=new URL('./rescue.html',location.href);
+    rescue.searchParams.set('target',String(fallbackVersion));
+    rescue.searchParams.set('from','fallback');
+    rescue.searchParams.set('ts',String(Date.now()));
+    location.replace(rescue.toString());
   }
 })();
 </script>
