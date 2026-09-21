@@ -1,4 +1,4 @@
-/* Matemática 7º ano — Volume 3 — enunciados literais do PDF — v97 */
+/* Matemática 7º ano — Volume 3 — enunciados e alternativas preservados — v97 */
 window.__v97Math7Subject={
   "key": "math",
   "emoji": "🧮",
@@ -36,7 +36,7 @@ window.__v97Math7Subject={
             "y = 20x + 30"
           ],
           "correct": 3,
-          "explanation": "A parte variável é 20x e a taxa de R$ 30,00 é cobrada uma única vez. Portanto, y = 20x + 30.",
+          "explanation": "A expressão que representa a parte variável do valor do aluguel é 20x.\n\nAlém disso, há uma taxa única de R$ 30,00. Portanto, sendo y o valor total do aluguel, y = 20x + 30.",
           "expected": "Resposta correta: y = 20x + 30.",
           "source": "Aula 1 • Aprofundando 1"
         },
@@ -53,7 +53,7 @@ window.__v97Math7Subject={
             "16"
           ],
           "correct": 2,
-          "explanation": "(−2)³ + 2·(−2)² = −8 + 2·4 = 0.",
+          "explanation": "Sendo que x = −2 na expressão x³ + 2x², temos:\n(−2)³ + 2 · (−2)² =\n−8 + 2 · 4 =\n−8 + 8 = 0.",
           "expected": "Resposta correta: 0.",
           "source": "Aula 1 • Aprofundando 2"
         },
@@ -107,23 +107,6 @@ window.__v97Math7Subject={
           "explanation": "A expressão algébrica que representa o valor gasto pelos cinco amigos no passeio ao cinema é V = 5c + 3p.",
           "expected": "Resposta correta: V = 5c + 3p.",
           "source": "Aula 1 • Na prática • Atividade 2 • item a)"
-        },
-        {
-          "id": "m7_b1_05b",
-          "type": "mcq",
-          "reviewLabel": "📘 Revisão do livro",
-          "review": "Leia o resumo da lição e use a whiteboard para fazer a conta antes de marcar a alternativa.",
-          "text": "Cinco amigos foram ao cinema e apenas três deles compraram pipoca. Representando por c o preço do ingresso do cinema e por p o preço da pipoca, responda:\n\nb) Suponha que o preço do ingresso era de R$ 25,00 e o de cada pipoca era de R$ 18,00. Qual foi o valor total gasto pelo grupo?",
-          "options": [
-            "R$ 125,00",
-            "R$ 154,00",
-            "R$ 179,00",
-            "R$ 215,00"
-          ],
-          "correct": 2,
-          "explanation": "V = 5 ∙ 25 + 3 ∙ 18 = 125 + 54 = 179. Portanto, o valor gasto pelos cinco amigos foi R$ 179,00.",
-          "expected": "Resposta correta: R$ 179,00.",
-          "source": "Aula 1 • Na prática • Atividade 2 • item b)"
         },
         {
           "id": "m7_b1_06",
@@ -1254,10 +1237,9 @@ window.__v97Math7Subject={
   "homeDescription": "Revisão construída diretamente a partir do Livro do Estudante do 7º ano, Volume 3. Os enunciados das questões reproduzem o texto do livro; quando a atividade original é dissertativa, apenas as alternativas da Lousa são acrescentadas.",
   "chips": [
     "7 lições",
-    "67 questões do livro",
+    "66 questões do livro",
     "Aulas 1–35",
     "Volume 3 • Matemática"
   ],
   "hint": "🧮 Leia o resumo baseado no livro, faça a conta na whiteboard e marque a alternativa."
 };
-window.__v95Math7Subject=window.__v97Math7Subject;
