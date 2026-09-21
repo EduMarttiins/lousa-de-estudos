@@ -64,7 +64,7 @@
     return expressionResult(q&&q.text);
   }
 
-  function isArithmetic(q){return !!(q&&q._v41Arithmetic&&expectedValue(q)!==null)}
+  function isArithmetic(q){return !!(q&&!String(q.id||'').startsWith('m7_')&&q._v41Arithmetic&&expectedValue(q)!==null)}
 
   function installStyles(){
     if(document.getElementById('v50MathStyles'))return;
