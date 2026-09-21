@@ -1,7 +1,7 @@
 {
-  "contentVersion": 93,
+  "contentVersion": 94,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Adiciona seletor de 5º e 7º ano. No 7º ano, inclui Matemática preparatória para a Prova Paulista do 3º bimestre com 9 lições e 72 questões sobre números racionais, álgebra, retas e ângulos, triângulos, volume, probabilidade e estatística. Mantém o 5º ano e o runtime estável sem atualização em segundo plano.",
+  "message": "Corrige a Matemática do 7º ano: restaura as 3 alternativas, adiciona whiteboard branca em todas as questões, mostra instruções claras de uso e impede que a antiga resposta numérica do 5º ano substitua a múltipla escolha. Mantém o runtime estável sem atualização automática durante o uso.",
   "publishedAt": "2026-09-20"
 }
