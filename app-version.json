@@ -1,7 +1,7 @@
 {
-  "contentVersion": 95,
+  "contentVersion": 96,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Refaz a Matemática do 7º ano usando o Livro do Estudante Volume 3 enviado pelo usuário como fonte principal. Agrupa as 35 aulas em 7 lições e inclui 66 questões baseadas nos exercícios Na prática, Aprofundando e Revisão, mantendo whiteboard e alternativas visíveis. Preserva o runtime estável sem atualização automática durante o uso.",
-  "publishedAt": "2026-09-20"
+  "message": "Atualiza Matemática do 7º ano para preservar os enunciados do Livro do Estudante Volume 3. Mantém o texto original das atividades, mostra Aula/Atividade fora do enunciado e, nas questões dissertativas do livro, acrescenta apenas alternativas para uso na Lousa. Inclui o exercício dos cinco amigos no cinema exatamente como no material.",
+  "publishedAt": "2026-09-21"
 }
