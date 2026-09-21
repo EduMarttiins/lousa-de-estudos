@@ -114,7 +114,7 @@
       if(typeof subjects==='undefined'||!subjects)return false;
       if(!religionSubject){
         const base=subjects.religion||{};
-        religionSubject={...base,key:'religion',title:'Ensino Religioso',emoji:'🙏',homeDescription:'Leia o texto completo e responda às perguntas exatamente como aparecem no material impresso.',hint:'💡 As respostas estão no próprio texto da lição.',chips:['São João Paulo II','Livro de Daniel','Perguntas do material impresso'],lessons:religionLessons(),__v93Stable:true};
+        religionSubject={...base,key:'religion',title:'Ensino Religioso',emoji:'🙏',homeDescription:'Leia o texto completo e responda às perguntas exatamente como aparecem no material impresso.',hint:'💡 As respostas estão no próprio texto da lição.',chips:['São João Paulo II','Livro de Daniel','Perguntas do material impresso'],lessons:religionLessons(),__v94Stable:true};
       }else religionSubject.lessons=religionLessons();
       subjects.religion=religionSubject;
       return true;
@@ -139,27 +139,27 @@
 
   function patchUnlock(){
     try{
-      if(typeof isLessonUnlocked==='function'&&!isLessonUnlocked.__v93Religion){
+      if(typeof isLessonUnlocked==='function'&&!isLessonUnlocked.__v94Religion){
         const previous=isLessonUnlocked;
         const wrapped=function(index){if(String(typeof currentSubjectKey!=='undefined'?currentSubjectKey:'')==='religion')return true;return previous.apply(this,arguments)};
-        wrapped.__v93Religion=true; isLessonUnlocked=wrapped;
+        wrapped.__v94Religion=true; isLessonUnlocked=wrapped;
       }
     }catch(e){}
   }
 
   function patchTheme(){
     try{
-      if(typeof applySubjectTheme==='function'&&!applySubjectTheme.__v93Religion){
+      if(typeof applySubjectTheme==='function'&&!applySubjectTheme.__v94Religion){
         const previous=applySubjectTheme;
         const wrapped=function(subject){const out=previous.apply(this,arguments);if(subject&&subject.key==='religion'){const subtitle=document.getElementById('brandSubtitle');if(subtitle)subtitle.textContent='5º ano • revisão de Ensino Religioso'}return out};
-        wrapped.__v93Religion=true; applySubjectTheme=wrapped;
+        wrapped.__v94Religion=true; applySubjectTheme=wrapped;
       }
     }catch(e){}
   }
 
   function styles(){
-    if(document.getElementById('v93StudyStyles'))return;
-    const s=document.createElement('style'); s.id='v93StudyStyles';
+    if(document.getElementById('v94StudyStyles'))return;
+    const s=document.createElement('style'); s.id='v94StudyStyles';
     s.textContent='.subjectCard.religion{background:linear-gradient(145deg,#fffdf5 0%,#fff5d9 100%);border-color:#ead7a4}.readingText .v90StudyLead,.readingText .v94StudyLead{margin:0 0 18px;padding:14px 15px;border:1px solid #d7e8dd;background:#f2fbf5;border-radius:16px;line-height:1.6;color:#284234}.readingText h3{margin:22px 0 8px;font-size:1.08em;line-height:1.35;color:#26352d}.readingText h3:first-of-type{margin-top:6px}.readingText p{margin:0 0 12px;line-height:1.72}.readingText .v90Sources{margin-top:22px;padding:12px 14px;border-radius:14px;background:#f7f7f7;border:1px solid #e5e7eb;font-size:.82em;line-height:1.55;color:#667085}';
     document.head.appendChild(s);
   }
