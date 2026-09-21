@@ -18,7 +18,7 @@
       './v68.js?v=96','./v69.js?v=96','./v70-data-01.js?v=96','./v70-data-02.js?v=96','./v70-data-03.js?v=96',
       './v70-data-04.js?v=96','./v70-data-05.js?v=96','./v70-data-06.js?v=96','./v70-data-07.js?v=96','./v70-data-08.js?v=96',
       './v70-data-09.js?v=96','./v70-data-10.js?v=96','./v70-data-11.js?v=96','./v70.js?v=96','./v71.js?v=96','./v72.js?v=96','./v73.js?v=96','./v74.js?v=96','./v75.js?v=96','./v76.js?v=96','./v77.js?v=96','./v78.js?v=96','./v79.js?v=96','./v80.js?v=96','./v81.js?v=96','./v82.js?v=96',
-      './v90-jp.js?v=96','./v90-dn.js?v=96','./v96-math7.js?v=96','./v95.js?v=96','./v96-ui.js?v=96'
+      './v90-jp.js?v=96','./v90-dn.js?v=96','./v96-math7.js?v=96','./v96-core.js?v=96','./v96-ui.js?v=96'
     ];
     const tags=list=>list.map(src=>'<script src="'+src+'"><\/script>').join('\n');
     const snapshot='<script>window.__lousaCurrentContentVersion=96;try{window.__lousaV68PortugueseSnapshot=JSON.parse(JSON.stringify(portugueseLessons));}catch(e){window.__lousaV68PortugueseSnapshot=[];}<\/script>';
