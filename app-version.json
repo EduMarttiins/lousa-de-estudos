@@ -1,7 +1,7 @@
 {
-  "contentVersion": 96,
+  "contentVersion": 97,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Atualiza Matemática do 7º ano para preservar os enunciados do Livro do Estudante Volume 3. Mantém o texto original das atividades, mostra Aula/Atividade fora do enunciado e, nas questões dissertativas do livro, acrescenta apenas alternativas para uso na Lousa. Inclui o exercício dos cinco amigos no cinema exatamente como no material.",
+  "message": "Ajusta a Matemática do 7º ano para seguir o formato do livro: enunciado original, alternativas originais, whiteboard abaixo das alternativas e resolução 'Como montar a conta' liberada somente depois de enviar a resposta. Remove orientações antes da questão e elimina item que não existia no material.",
   "publishedAt": "2026-09-21"
 }
