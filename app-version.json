@@ -1,7 +1,7 @@
 {
-  "contentVersion": 94,
+  "contentVersion": 95,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Corrige a Matemática do 7º ano: restaura as 3 alternativas, adiciona whiteboard branca em todas as questões, mostra instruções claras de uso e impede que a antiga resposta numérica do 5º ano substitua a múltipla escolha. Mantém o runtime estável sem atualização automática durante o uso.",
+  "message": "Refaz a Matemática do 7º ano usando o Livro do Estudante Volume 3 enviado pelo usuário como fonte principal. Agrupa as 35 aulas em 7 lições e inclui 66 questões baseadas nos exercícios Na prática, Aprofundando e Revisão, mantendo whiteboard e alternativas visíveis. Preserva o runtime estável sem atualização automática durante o uso.",
   "publishedAt": "2026-09-20"
 }
