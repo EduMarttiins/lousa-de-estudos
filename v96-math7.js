@@ -1260,3 +1260,4 @@ window.__v96Math7Subject={
   ],
   "hint": "🧮 Leia o resumo baseado no livro, faça a conta na whiteboard e marque a alternativa."
 };
+window.__v95Math7Subject=window.__v96Math7Subject;
