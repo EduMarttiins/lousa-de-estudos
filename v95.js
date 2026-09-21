@@ -347,7 +347,7 @@
           if(!card.querySelector('.v95Math7Instruction')){
             const note=document.createElement('div');
             note.className='v95Math7Instruction';
-            note.innerHTML='<strong>O que fazer nesta questão:</strong><span><b>1.</b> Use a lousa branca para fazer a conta ou rascunhar.</span><span><b>2.</b> Marque uma das 3 alternativas.</span><span><b>3.</b> Toque em <em>Enviar resposta</em>.</span>';
+            note.innerHTML='<strong>O que fazer nesta questão:</strong><span><b>1.</b> Use a lousa branca para fazer a conta ou rascunhar.</span><span><b>2.</b> Marque a alternativa correta.</span><span><b>3.</b> Toque em <em>Enviar resposta</em>.</span>';
             const layout=card.querySelector('.mcqLayout')||options;
             if(layout&&layout.parentNode)layout.parentNode.insertBefore(note,layout);
             else card.insertBefore(note,card.querySelector('.actions')||null);
