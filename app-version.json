@@ -1,7 +1,7 @@
 {
-  "contentVersion": 92,
+  "contentVersion": 93,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Amplia os textos de revisão das seis lições de Geografia para que o aluno encontre no próprio conteúdo as informações necessárias para responder às questões. Mantém as perguntas existentes e preserva o runtime estável da v91, sem atualização em segundo plano.",
-  "publishedAt": "2026-09-16"
+  "message": "Adiciona seletor de 5º e 7º ano. No 7º ano, inclui Matemática preparatória para a Prova Paulista do 3º bimestre com 9 lições e 72 questões sobre números racionais, álgebra, retas e ângulos, triângulos, volume, probabilidade e estatística. Mantém o 5º ano e o runtime estável sem atualização em segundo plano.",
+  "publishedAt": "2026-09-20"
 }
