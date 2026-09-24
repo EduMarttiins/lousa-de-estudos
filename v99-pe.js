@@ -325,7 +325,18 @@
       return true;
     }catch(e){return false}
   }
+  function stampVersion(){
+    try{
+      window.__lousaCurrentContentVersion=99;
+      const meta=document.querySelector('meta[name="app-version"]');
+      if(meta)meta.content='99';
+      document.documentElement.dataset.contentVersion='99';
+      document.querySelectorAll('.lousaVersionOnly').forEach(el=>{el.textContent='v99';el.style.visibility='';});
+    }catch(e){}
+  }
+
   installMcqGuards();
+  stampVersion();
   if(!installPhysicalEducation()){
     let tries=0;
     const timer=setInterval(()=>{
