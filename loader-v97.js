@@ -3,7 +3,7 @@
     const response=await fetch('./index.html?raw=v100&ts='+Date.now(),{cache:'no-store'});
     if(!response.ok)throw new Error('Falha ao carregar a base do aplicativo');
     let html=await response.text();
-    html=html.replace(/<meta name="app-version" content="[^"]*">/,'<meta name="app-version" content="99">');
+    html=html.replace(/<meta name="app-version" content="[^"]*">/,'<meta name="app-version" content="100">');
     html=html.replace(/\.\/manifest\.webmanifest(?:\?[^"']*)?/g,'./manifest.webmanifest?v=100');
     html=html.replace(/\.\/icons\/lousa-icon\.svg(?:\?[^"']*)?/g,'./icons/lousa-icon-512.png?v=100');
     html=html.replace(/type="image\/svg\+xml"/g,'type="image/png"');
