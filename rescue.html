@@ -9,11 +9,11 @@
 <title>Atualizando Lousa de Estudos</title>
 <style>html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#f3f8f5;color:#1f2937}.wrap{min-height:100vh;display:grid;place-items:center;padding:24px}.card{width:min(100%,420px);background:#fff;border:1px solid #e1ebe4;border-radius:24px;padding:28px;text-align:center;box-shadow:0 18px 48px rgba(20,40,28,.10)}.spin{width:42px;height:42px;margin:0 auto 16px;border:4px solid #dcebe0;border-top-color:#2f9d59;border-radius:50%;animation:s .8s linear infinite}@keyframes s{to{transform:rotate(360deg)}}p{color:#64748b;line-height:1.5}</style>
 </head>
-<body><div class="wrap"><div class="card"><div class="spin"></div><strong>Estabilizando a Lousa de Estudos</strong><p>Removendo caches e controladores antigos antes de abrir a v99…</p></div></div>
+<body><div class="wrap"><div class="card"><div class="spin"></div><strong>Estabilizando a Lousa de Estudos</strong><p>Removendo caches e controladores antigos antes de abrir a v100…</p></div></div>
 <script>
 (async()=>{
   const params=new URLSearchParams(location.search);
-  const target=Number(params.get('target')||99)||99;
+  const target=Number(params.get('target')||100)||100;
   try{if('serviceWorker' in navigator){const regs=await navigator.serviceWorker.getRegistrations();await Promise.all(regs.map(r=>r.unregister().catch(()=>false)));}}catch(e){}
   try{if('caches' in window){const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('lousa-de-estudos-v')).map(k=>caches.delete(k)));}}catch(e){}
   try{sessionStorage.removeItem('lousaInstallPreparedReload')}catch(e){}
