@@ -1,7 +1,7 @@
 {
-  "contentVersion": 97,
+  "contentVersion": 98,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Ajusta a Matemática do 7º ano para seguir o formato do livro: enunciado original, alternativas originais, whiteboard abaixo das alternativas e resolução 'Como montar a conta' liberada somente depois de enviar a resposta. Remove orientações antes da questão e elimina item que não existia no material.",
-  "publishedAt": "2026-09-21"
+  "message": "Adiciona Educação Física ao 5º ano com uma lição de Ginástica Geral e Ginástica para Todos, contendo resumo de estudo e 10 questões sobre deslocamentos, saltos, giros, rolamentos, equilíbrios, apoios, formações, cooperação e segurança.",
+  "publishedAt": "2026-09-24"
 }
