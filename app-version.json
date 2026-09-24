@@ -1,7 +1,7 @@
 {
-  "contentVersion": 98,
+  "contentVersion": 99,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Adiciona Educação Física ao 5º ano com uma lição de Ginástica Geral e Ginástica para Todos, contendo resumo de estudo e 10 questões sobre deslocamentos, saltos, giros, rolamentos, equilíbrios, apoios, formações, cooperação e segurança.",
+  "message": "Corrige Educação Física do 5º ano para exibir exclusivamente questões de múltipla escolha com alternativas.",
   "publishedAt": "2026-09-24"
 }
