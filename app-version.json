@@ -1,7 +1,7 @@
 {
-  "contentVersion": 99,
+  "contentVersion": 100,
   "apkVersion": 4,
   "apkUrl": "",
-  "message": "Corrige Educação Física do 5º ano para exibir exclusivamente questões de múltipla escolha com alternativas.",
+  "message": "Adiciona barra de desempenho na Educação Física, com acertos, erros e questões pendentes no card e no final da lição.",
   "publishedAt": "2026-09-24"
 }
