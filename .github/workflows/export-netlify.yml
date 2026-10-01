@@ -1,0 +1,28 @@
+name: Exportar Lousa para deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/export-netlify.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exportar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+      - name: Preparar pacote
+        run: |
+          mkdir -p export
+          rsync -a --exclude=".git" --exclude=".github" ./ export/
+      - name: Enviar artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: lousa-netlify
+          path: export/
+          retention-days: 1
