@@ -1,8 +1,8 @@
-/* Lousa de Estudos v103 — Ciências 5º ano — folhetos em formato visual interativo */
+/* Lousa de Estudos v107 — Ciências 5º ano — folhetos em formato visual interativo */
 (()=>{
   if(window.__lousaV103InteractiveFolhetos)return;
   window.__lousaV103InteractiveFolhetos=true;
-  const VERSION=103;
+  const VERSION=107;
   const customTypes=new Set(['visualX','visualClassify','visualFill','visualFoods','visualWordSearch','visualBinary','visualTF']);
 
   function stateKey(q,suffix){
@@ -134,7 +134,7 @@
     const palette=document.createElement('div');palette.className='v103Palette';
     const green=makeButton('● Verde','v103Color green active');
     const red=makeButton('● Vermelho','v103Color red');
-    palette.appendChild(green);palette.appendChild(red);ui.body.appendChild(palette);
+    palette.appendChild(green);palette.appendChild(red);ui.body.appendChild(palette);const hint=document.createElement('div');hint.className='v103PaintHint';hint.innerHTML='<strong>Como fazer:</strong> escolha uma cor e toque em cada alimento para pintá-lo.';ui.body.appendChild(hint);
     let active='green';
     function choose(color){active=color;green.classList.toggle('active',color==='green');red.classList.toggle('active',color==='red')}
     green.addEventListener('click',()=>choose('green'));red.addEventListener('click',()=>choose('red'));
@@ -400,11 +400,11 @@
       '.v103WordBank{padding:13px;border-radius:15px;background:#f2f7ea;border:1px dashed #9fbe85}.v103WordBank>div{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.v103WordBank span{padding:5px 9px;border-radius:999px;background:#fff;border:1px solid #d4e2c7;font-weight:750;font-size:13px}',
       '.v103FillRow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;background:#fff;border:1px solid #e2dfd5;border-radius:14px;padding:11px 12px;line-height:1.55}.v103FillRow select{border:0;border-bottom:2px solid #76a76e;background:#f7fbf4;padding:7px 9px;font:inherit;font-weight:850;border-radius:7px}',
       '.v103Palette{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.v103Color{min-width:128px;border:2px solid transparent;border-radius:999px;padding:10px 14px;font-weight:950;background:#fff}.v103Color.green{color:#287a43;border-color:#76b889}.v103Color.red{color:#b73c3c;border-color:#df8f8f}.v103Color.active{box-shadow:0 0 0 4px rgba(61,115,71,.12);transform:translateY(-1px)}',
-      '.v103FoodGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.v103FoodCard{min-height:132px;border:2px solid #d9d8d1;border-radius:18px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:11px 8px;color:#2e352f}.v103FoodIcon{font-size:46px;line-height:1}.v103FoodCard strong{font-size:12px;text-align:center}.v103PaintMark{min-height:16px;font-size:10px;font-weight:1000;letter-spacing:.3px}.v103FoodCard.paintGreen{background:#e8f7e9;border-color:#55a86a;color:#236d39}.v103FoodCard.paintRed{background:#fdeaea;border-color:#d85f5f;color:#9f3434}',
+      '.v103PaintHint{text-align:center;padding:9px 12px;border-radius:12px;background:#fff;border:1px dashed #cfc7b6;color:#5a5f58;font-size:13px;line-height:1.45}.v103PaintHint strong{color:#30372f}.v103FoodGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:760px;width:100%;margin:2px auto 0}.v103FoodCard{min-height:148px;border:2px solid #d9d8d1;border-radius:18px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 10px;color:#2e352f;box-shadow:0 5px 12px rgba(70,60,40,.05)}.v103FoodIcon{font-size:52px;line-height:1}.v103FoodCard strong{font-size:12px;text-align:center}.v103PaintMark{min-height:16px;font-size:10px;font-weight:1000;letter-spacing:.3px}.v103FoodCard.paintGreen{background:#e8f7e9;border-color:#55a86a;color:#236d39}.v103FoodCard.paintRed{background:#fdeaea;border-color:#d85f5f;color:#9f3434}',
       '.v103LetterGrid{align-self:center;max-width:100%;overflow:auto;background:#fff;border:2px solid #b6c99e;border-radius:16px;padding:10px}.v103LetterRow{display:grid;grid-auto-flow:column;grid-auto-columns:30px;gap:3px;margin:3px 0}.v103LetterRow span{width:30px;height:30px;display:grid;place-items:center;border-radius:5px;background:#f8fbf3;font-weight:950;font-size:14px;color:#3d503a}',
       '.v103FindWords{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}.v103WordPill{border:1px solid #bbcbaa;background:#fff;border-radius:999px;padding:8px 11px;font-weight:900;color:#4d6247}.v103WordPill.found{background:#dff4e5;border-color:#59a66d;color:#24663b}.v103WordPill.found:before{content:"✓ ";}',
       '.v103Situation,.v103TFText{font-weight:750;line-height:1.5}.v103BinaryChoices,.v103TFChoices{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.v103TFButton{min-width:48px;font-size:16px}',
-      '@media(max-width:760px){.v103FoodGrid{grid-template-columns:repeat(3,1fr)}}',
+      '@media(max-width:760px){.v103FoodGrid{grid-template-columns:repeat(2,1fr)}}',
       '@media(max-width:520px){.v103FoodGrid{grid-template-columns:repeat(2,1fr)}.v103FoodCard{min-height:120px}.v103FoodIcon{font-size:42px}.v103LetterRow{grid-auto-columns:27px}.v103LetterRow span{width:27px;height:27px;font-size:13px}}'
     ].join('');
     document.head.appendChild(s);
