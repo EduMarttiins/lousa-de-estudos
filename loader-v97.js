@@ -9,7 +9,8 @@
     html=html.replace(/type="image\/svg\+xml"/g,'type="image/png"');
     html=html.replace(/<link rel="stylesheet" href="\.\/(?:v3[5-9]|v4[0-9]|v5[0-9]|v6[0-9]|v7[0-9]|v8[0-9]|v9[0-9]|pwa-v3[9]|pwa-v4[0-9]|pwa-v5[0-9]|pwa-v6[0-9]|pwa-v7[0-9]|pwa-v8[0-9]|pwa-v9[0-9])\.css\?v=[^"']+">\s*/g,'');
     html=html.replace(/<script src="\.\/(?:v3[5-9]|v4[0-9]|v5[0-9]|v6[0-9]|v7[0-9]|v8[0-9]|v9[0-9]|pwa-v3[9]|pwa-v4[0-9]|pwa-v5[0-9]|pwa-v6[0-9]|pwa-v7[0-9]|pwa-v8[0-9]|pwa-v9[0-9])\.js\?v=[^"']+"(?: defer)?><\/script>\s*/g,'');
-    html=html.replace(/<script src=\"\\.\\/v104-clear-lessons\\.js[^\"]*\"><\\/script>\\s*/g,'');\n    html=html.replace('</head>','\n<link rel="stylesheet" href="./v37.css?v=104">\n<link rel="stylesheet" href="./pwa-v39.css?v=104">\n<style id="v97VersionBootHide">.lousaVersionOnly{visibility:hidden!important}</style>\n</head>');
+    html=html.replace('<script src="./v104-clear-lessons.js?v=104"></script>','');
+    html=html.replace('</head>','\n<link rel="stylesheet" href="./v37.css?v=104">\n<link rel="stylesheet" href="./pwa-v39.css?v=104">\n<style id="v97VersionBootHide">.lousaVersionOnly{visibility:hidden!important}</style>\n</head>');
 
     const before=['./v37.js?v=104','./v41.js?v=104','./v50.js?v=104','./v54.js?v=104'];
     const after=[
