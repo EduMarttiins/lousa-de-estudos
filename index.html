@@ -4,7 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Lousa de Estudos</title>
-<meta name="app-version" content="34">
+<script data-direct-boot="106">
+(()=>{try{
+  const path=location.pathname;
+  const direct=path.endsWith('/index.html')||path.endsWith('/');
+  if(direct){
+    const target=new URL('./start.html',location.href);
+    target.searchParams.set('boot',String(Date.now()));
+    location.replace(target.toString());
+  }
+}catch(e){}})();
+</script>
+<meta name="app-version" content="106">
 <style>
 :root{
   --bg:#f3f8f5;--paper:#fff;--ink:#1f2937;--muted:#64748b;--green:#2f9d59;--greenDark:#1f7e45;--greenSoft:#eaf7ef;
@@ -1423,5 +1434,5 @@ showSubjects();
 })();
 </script>
 
-<script src="./v104-clear-lessons.js?v=104"></script>\n</body>
+</body>
 </html>
