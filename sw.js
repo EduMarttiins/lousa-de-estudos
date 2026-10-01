@@ -1,13 +1,13 @@
-const VERSION='105-ciencias-cards';
+const VERSION='106-ciencias-cards';
 const CACHE='lousa-de-estudos-v'+VERSION;
 const ASSETS=[
-  './start.html','./rescue.html','./index.html','./v68.html','./loader-v97.js?v=105',
-  './v37.css?v=105','./pwa-v39.css?v=105','./v37.js?v=105','./v41.js?v=105','./v50.js?v=105','./v54.js?v=105',
-  './v55.js?v=105','./v56.js?v=105','./v57.js?v=105','./v58.js?v=105','./v59.js?v=105','./v60.js?v=105',
-  './v62.js?v=105','./v63.js?v=105','./v64.js?v=105','./v65.js?v=105','./v66.js?v=105','./v67.js?v=105','./v68.js?v=105','./v69.js?v=105',
-  './v70-data-01.js?v=105','./v70-data-02.js?v=105','./v70-data-03.js?v=105','./v70-data-04.js?v=105','./v70-data-05.js?v=105','./v70-data-06.js?v=105','./v70-data-07.js?v=105','./v70-data-08.js?v=105','./v70-data-09.js?v=105','./v70-data-10.js?v=105','./v70-data-11.js?v=105',
-  './v70.js?v=105','./v71.js?v=105','./v72.js?v=105','./v73.js?v=105','./v74.js?v=105','./v75.js?v=105','./v76.js?v=105','./v77.js?v=105','./v78.js?v=105','./v79.js?v=105','./v80.js?v=105','./v81.js?v=105','./v82.js?v=105',
-  './v90-jp.js?v=105','./v90-dn.js?v=105','./v97-math7.js?v=105','./v97-core.js?v=105','./v97-ui.js?v=105','./v99-pe.js?v=105','./v100-score.js?v=105','./v101-science-nutrition.js?v=105','./v102-science-folhetos.js?v=105','./v103-science-interactive.js?v=105','./v105-science-cards.js?v=105','./manifest.webmanifest?v=105','./icons/lousa-icon-192.png?v=105','./icons/lousa-icon-512.png?v=105'
+  './start.html','./rescue.html','./index.html','./v68.html','./loader-v97.js?v=106',
+  './v37.css?v=106','./pwa-v39.css?v=106','./v37.js?v=106','./v41.js?v=106','./v50.js?v=106','./v54.js?v=106',
+  './v55.js?v=106','./v56.js?v=106','./v57.js?v=106','./v58.js?v=106','./v59.js?v=106','./v60.js?v=106',
+  './v62.js?v=106','./v63.js?v=106','./v64.js?v=106','./v65.js?v=106','./v66.js?v=106','./v67.js?v=106','./v68.js?v=106','./v69.js?v=106',
+  './v70-data-01.js?v=106','./v70-data-02.js?v=106','./v70-data-03.js?v=106','./v70-data-04.js?v=106','./v70-data-05.js?v=106','./v70-data-06.js?v=106','./v70-data-07.js?v=106','./v70-data-08.js?v=106','./v70-data-09.js?v=106','./v70-data-10.js?v=106','./v70-data-11.js?v=106',
+  './v70.js?v=106','./v71.js?v=106','./v72.js?v=106','./v73.js?v=106','./v74.js?v=106','./v75.js?v=106','./v76.js?v=106','./v77.js?v=106','./v78.js?v=106','./v79.js?v=106','./v80.js?v=106','./v81.js?v=106','./v82.js?v=106',
+  './v90-jp.js?v=106','./v90-dn.js?v=106','./v97-math7.js?v=106','./v97-core.js?v=106','./v97-ui.js?v=106','./v99-pe.js?v=106','./v100-score.js?v=106','./v101-science-nutrition.js?v=106','./v102-science-folhetos.js?v=106','./v103-science-interactive.js?v=106','./v106-science-cards.js?v=106','./manifest.webmanifest?v=106','./icons/lousa-icon-192.png?v=106','./icons/lousa-icon-512.png?v=106'
 ];
 self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(ASSETS);})());});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('lousa-de-estudos-v')&&k!==CACHE).map(k=>caches.delete(k)));})());});
