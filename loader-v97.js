@@ -18,7 +18,7 @@
       './v68.js?v=103','./v69.js?v=103','./v70-data-01.js?v=103','./v70-data-02.js?v=103','./v70-data-03.js?v=103',
       './v70-data-04.js?v=103','./v70-data-05.js?v=103','./v70-data-06.js?v=103','./v70-data-07.js?v=103','./v70-data-08.js?v=103',
       './v70-data-09.js?v=103','./v70-data-10.js?v=103','./v70-data-11.js?v=103','./v70.js?v=103','./v71.js?v=103','./v72.js?v=103','./v73.js?v=103','./v74.js?v=103','./v75.js?v=103','./v76.js?v=103','./v77.js?v=103','./v78.js?v=103','./v79.js?v=103','./v80.js?v=103','./v81.js?v=103','./v82.js?v=103',
-      './v90-jp.js?v=103','./v90-dn.js?v=103','./v97-math7.js?v=103','./v97-core.js?v=103','./v97-ui.js?v=103','./v99-pe.js?v=103','./v100-score.js?v=103','./v101-science-nutrition.js?v=103','./v103-science-folhetos.js?v=103'
+      './v90-jp.js?v=103','./v90-dn.js?v=103','./v97-math7.js?v=103','./v97-core.js?v=103','./v97-ui.js?v=103','./v99-pe.js?v=103','./v100-score.js?v=103','./v101-science-nutrition.js?v=103','./v102-science-folhetos.js?v=103','./v103-science-interactive.js?v=103'
     ];
     const tags=list=>list.map(src=>'<script src="'+src+'"><\/script>').join('\n');
     const snapshot='<script>window.__lousaCurrentContentVersion=103;try{window.__lousaV68PortugueseSnapshot=JSON.parse(JSON.stringify(portugueseLessons));}catch(e){window.__lousaV68PortugueseSnapshot=[];}<\/script>';
